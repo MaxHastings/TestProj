@@ -10,6 +10,8 @@ import UIKit
 
 @IBDesignable class RatingControl: UIStackView {
 
+    //Test Comment for New Button Feature
+    
     //MARK: Properties
     private var ratingButtons = [UIButton]()
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
