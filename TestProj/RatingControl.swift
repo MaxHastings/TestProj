@@ -9,8 +9,6 @@
 import UIKit
 
 @IBDesignable class RatingControl: UIStackView {
-
-    //Test Comment for New Button Feature
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
