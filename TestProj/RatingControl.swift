@@ -12,6 +12,9 @@ import UIKit
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
+    
+    public var delegate : RatingControlDelegate?
+    
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
         didSet {
             setupButtons()
@@ -56,6 +59,11 @@ import UIKit
         } else {
             // Otherwise set the rating to the selected star
             rating = selectedRating
+        }
+        
+        //Make a callback that rating changed
+        if let currDelegate = delegate{
+            currDelegate.ratingSet(rating: selectedRating)
         }
     }
     

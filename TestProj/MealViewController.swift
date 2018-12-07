@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 class MealViewController: UIViewController, UITextFieldDelegate,
-UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingControlDelegate{
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,6 +29,9 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        
+        // Handle rating changes through delegate callbacks.
+        ratingControl.delegate = self
         
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
@@ -72,6 +75,10 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         }
         // Set photoImageView to display the selected image.
         photoImageView.image = selectedImage
+        
+        // Maybe enable save button
+        updateSaveButtonState()
+        
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
@@ -125,6 +132,12 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
+    }
+    
+    //Called when Rating changes in RatingControl
+    func ratingSet(rating: Int) {
+        //Maybe enable save button
+        updateSaveButtonState()
     }
 }
 
